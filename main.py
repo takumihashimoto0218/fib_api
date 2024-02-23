@@ -3,6 +3,8 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 def fib(n):
+  if not isinstance(n, int):
+    raise ValueError("nは整数でなければなりません")
   if n < 0:
     raise ValueError("nは非負の整数でなければなりません")
   elif n == 0:
@@ -17,11 +19,12 @@ def fib(n):
 
 @app.route('/fib', methods=['GET'])
 def get_fib():
-    n = request.args.get('n', default=1, type=int)
+    n_str = request.args.get('n', default="1")
     try:
+        n = int(n_str)
         result = fib(n)
         return jsonify({'result': result}), 200
-    except ValueError as e:
+    except ValueError:
         return jsonify({'status': 400, 'message': 'Bad request'}), 400
 
 @app.errorhandler(404)
