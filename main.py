@@ -3,9 +3,7 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 def fib(n):
-  if not isinstance(n, int):
-    raise ValueError("nは整数でなければなりません")
-  if n < 0:
+  if not isinstance(n, int) or n < 0:
     raise ValueError("nは非負の整数でなければなりません")
   elif n == 0:
       return 0
