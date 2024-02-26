@@ -30,6 +30,12 @@ class FibTestCase(unittest.TestCase):
     self.assertEqual(response.status_code, 400)
     self.assertIn('Bad request', response.data.decode('utf-8'))
 
+  # クエリパラメータが浮動小数の時のテスト
+  def test_fib_api_floating_point_input(self):
+    response = self.app.get('/fib?n=1.2')
+    self.assertEqual(response.status_code, 400)
+    self.assertIn('Bad request', response.data.decode('utf-8'))
+
   # 存在しないエンドポイントへのアクセスをテスト
   def test_not_found(self):
     response = self.app.get('/non-existent-endpoint')
