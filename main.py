@@ -25,6 +25,10 @@ def get_fib():
     except ValueError:
         return jsonify({'status': 400, 'message': 'Bad request'}), 400
 
+@app.route('/')
+def root():
+    return jsonify({'error': 'Bad request'}), 400
+
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({'error': 'Not found'}), 404
