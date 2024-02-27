@@ -17,7 +17,7 @@ def fib(n):
 
 @app.route('/fib', methods=['GET'])
 def get_fib():
-    n_str = request.args.get('n', default="1")
+    n_str = request.args.get('n', default="none")
     try:
         n = int(n_str)
         result = fib(n)
