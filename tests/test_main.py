@@ -36,6 +36,13 @@ class FibTestCase(unittest.TestCase):
     self.assertEqual(response.status_code, 400)
     self.assertIn('Bad request', response.data.decode('utf-8'))
 
+
+  # ルートパスのテスト
+  def test_root(self):
+    response = self.app.get('/')
+    self.assertEqual(response.status_code, 400)
+    self.assertIn('Bad request', response.data.decode('utf-8'))
+
   # 存在しないエンドポイントへのアクセスをテスト
   def test_not_found(self):
     response = self.app.get('/non-existent-endpoint')
