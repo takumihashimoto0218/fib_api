@@ -1,5 +1,5 @@
 import unittest
-from src.main import app
+from main import app
 
 class ErrorsCase(unittest.TestCase):
   def setUp(self):

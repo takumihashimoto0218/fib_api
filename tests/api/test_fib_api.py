@@ -1,5 +1,5 @@
 import unittest
-from src.main import app
+from main import app
 
 class FibAPITestCase(unittest.TestCase):
   # テストのセットアップ: テストケース実行前に毎回呼び出される

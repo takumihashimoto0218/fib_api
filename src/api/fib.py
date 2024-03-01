@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from fib_logic import fib
+from src.fib_logic import fib
 
 def get_fib():
   n_str = request.args.get('n', default="none")
